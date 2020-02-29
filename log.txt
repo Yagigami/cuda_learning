@@ -1,0 +1,26 @@
+arguments:
+nvprof ./program 1e10
+
+output:
+```
+==6821== NVPROF is profiling process 6821, command: ./eulerm 1e10
+0.57721566505066590
+==6821== Profiling application: ./eulerm 1e10
+==6821== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.97%  1.79074s         1  1.79074s  1.79074s  1.79074s  partial_sum(long, double*)
+                    0.03%  485.43us         1  485.43us  485.43us  485.43us  add_harmonics(double, double*, long)
+                    0.00%  1.3760us         1  1.3760us  1.3760us  1.3760us  [CUDA memcpy DtoH]
+      API calls:   82.73%  1.79075s         1  1.79075s  1.79075s  1.79075s  cudaDeviceSynchronize
+                   17.03%  368.54ms         1  368.54ms  368.54ms  368.54ms  cudaMalloc
+                    0.21%  4.4638ms         1  4.4638ms  4.4638ms  4.4638ms  cudaMemcpy
+                    0.01%  285.51us        97  2.9430us     234ns  96.512us  cuDeviceGetAttribute
+                    0.01%  172.51us         1  172.51us  172.51us  172.51us  cudaFree
+                    0.01%  168.92us         1  168.92us  168.92us  168.92us  cuDeviceTotalMem
+                    0.00%  92.843us         2  46.421us  39.093us  53.750us  cudaLaunchKernel
+                    0.00%  45.321us         1  45.321us  45.321us  45.321us  cuDeviceGetName
+                    0.00%  5.3190us         1  5.3190us  5.3190us  5.3190us  cuDeviceGetPCIBusId
+                    0.00%  2.5050us         3     835ns     279ns  1.6890us  cuDeviceGetCount
+                    0.00%  1.3680us         2     684ns     318ns  1.0500us  cuDeviceGet
+                    0.00%     510ns         1     510ns     510ns     510ns  cuDeviceGetUuid
+```
